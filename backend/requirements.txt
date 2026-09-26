@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+sqlalchemy
+psycopg2-binary
+opencv-python
+mediapipe
+numpy
+pandas
+scikit-learn
+bcrypt
+python-jose[cryptography]
+

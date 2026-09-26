@@ -1,0 +1,76 @@
+import React,{useState} from "react";
+import {useNavigate} from "react-router-dom";
+
+const Logo=({size=42})=><svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="logoGradient" x1="10" y1="10" x2="90" y2="90"><stop offset="0%" stopColor="#22d3ee"/><stop offset="50%" stopColor="#14b8a6"/><stop offset="100%" stopColor="#34d399"/></linearGradient><filter id="logoGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="50" cy="50" r="44" stroke="url(#logoGradient)" strokeWidth="2" opacity=".35"/><path d="M50 76C46 71 23 57 23 39C23 29 30 23 39 23C44 23 48 26 50 30C52 26 56 23 61 23C70 23 77 29 77 39C77 57 54 71 50 76Z" stroke="url(#logoGradient)" strokeWidth="5" fill="none" filter="url(#logoGlow)"/><path d="M30 50H70" stroke="#22d3ee" strokeWidth="4" strokeLinecap="round"/><path d="M35 43V57" stroke="#34d399" strokeWidth="4" strokeLinecap="round"/><path d="M65 43V57" stroke="#34d399" strokeWidth="4" strokeLinecap="round"/></svg>;
+
+const HUDCorners=()=> <><span className="absolute left-0 top-0 w-7 h-px bg-cyan-400"/><span className="absolute left-0 top-0 h-7 w-px bg-cyan-400"/><span className="absolute right-0 top-0 w-7 h-px bg-cyan-400"/><span className="absolute right-0 top-0 h-7 w-px bg-cyan-400"/><span className="absolute left-0 bottom-0 w-7 h-px bg-emerald-400"/><span className="absolute left-0 bottom-0 h-7 w-px bg-emerald-400"/><span className="absolute right-0 bottom-0 w-7 h-px bg-emerald-400"/><span className="absolute right-0 bottom-0 h-7 w-px bg-emerald-400"/></>;
+
+const AITrainingCore=()=>(
+<div className="relative mt-8 h-[390px] rounded-3xl bg-slate-950/70 border border-slate-700/60 overflow-hidden backdrop-blur-xl shadow-2xl shadow-cyan-950/30">
+<HUDCorners/>
+<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(34,211,238,0.08),transparent_45%)]"/>
+<div className="absolute inset-0 opacity-[0.035]" style={{backgroundImage:"linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px)",backgroundSize:"32px 32px"}}/>
+<div className="absolute top-4 left-5 right-5 flex items-center justify-between"><div><p className="text-[9px] font-mono tracking-[.2em] text-cyan-400 uppercase">AI TRAINING CORE</p><p className="text-[8px] font-mono tracking-widest text-slate-600 mt-1">PERSONALIZED PERFORMANCE ENGINE</p></div><div className="flex items-center gap-2 text-[8px] font-mono text-emerald-400"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping"/><span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"/></span>ONLINE</div></div>
+<div className="absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2"><div className="absolute inset-[-25px] rounded-full border border-cyan-400/10 animate-[spin_18s_linear_infinite]"/><div className="absolute inset-[-12px] rounded-full border border-dashed border-emerald-400/15 animate-[spin_12s_linear_infinite_reverse]"/><div className="relative w-36 h-36 rounded-full border border-cyan-400/30 bg-slate-950/80 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(34,211,238,.12)]"><div className="absolute inset-2 rounded-full border border-cyan-400/10"/><div className="absolute inset-5 rounded-full border-t-2 border-cyan-400 border-r-2 border-transparent animate-spin"/><span className="relative text-[9px] font-mono tracking-[.2em] text-slate-500 uppercase">AI SCORE</span><span className="relative text-4xl font-black text-white mt-1">94</span><span className="relative text-[9px] font-mono text-emerald-400 mt-1">OPTIMAL</span></div></div>
+<div className="absolute left-5 right-5 bottom-5"><div className="flex items-end justify-center gap-1 h-12 mb-4 opacity-80">{[18,30,22,38,28,44,34,48,25,40,32,52,38,46,27,42,34,50,30,43,24,36,28,45,32,40,25,34,20,30].map((height,index)=><span key={index} className="w-1 rounded-full bg-gradient-to-t from-cyan-500/20 via-cyan-400 to-emerald-400 animate-pulse" style={{height:`${height}%`,animationDelay:`${index*45}ms`}}/>)}</div><div className="grid grid-cols-3 gap-2"><div className="rounded-xl bg-black/40 border border-slate-800/90 p-3"><p className="text-[8px] font-mono tracking-widest text-slate-600 uppercase">Readiness</p><p className="text-sm font-bold text-cyan-400 mt-1">96%</p></div><div className="rounded-xl bg-black/40 border border-slate-800/90 p-3"><p className="text-[8px] font-mono tracking-widest text-slate-600 uppercase">Intensity</p><p className="text-sm font-bold text-emerald-400 mt-1">Adaptive</p></div><div className="rounded-xl bg-black/40 border border-slate-800/90 p-3"><p className="text-[8px] font-mono tracking-widest text-slate-600 uppercase">Engine</p><p className="text-sm font-bold text-white mt-1">Ready</p></div></div></div>
+<div className="absolute top-[30%] left-8 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,.8)] animate-ping"/><div className="absolute top-[24%] right-12 w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,.8)] animate-pulse"/><div className="absolute bottom-[31%] left-12 w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"/>
+</div>
+);
+
+const Login=()=>{
+const navigate=useNavigate();
+const [showPassword,setShowPassword]=useState(false);
+const [formData,setFormData]=useState({email:"",password:""});
+const [loading,setLoading]=useState(false);
+
+const handleChange=e=>setFormData({...formData,[e.target.name]:e.target.value});
+
+const handleSubmit=async e=>{
+e.preventDefault();
+setLoading(true);
+try{
+const response=await fetch("http://127.0.0.1:8000/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:formData.email,password:formData.password})});
+const data=await response.json();
+if(!response.ok)throw new Error(data.detail||"Invalid email or password");
+localStorage.setItem("access_token",data.access_token);
+localStorage.setItem("user",JSON.stringify(data.user));
+navigate("/dashboard");
+}catch(error){alert(error.message);}
+finally{setLoading(false);}
+};
+
+return(
+<div className="min-h-screen bg-[#060a12] text-slate-100 relative overflow-hidden selection:bg-cyan-400 selection:text-slate-950">
+<div className="fixed inset-0 pointer-events-none"><div className="absolute -top-40 -left-40 w-[550px] h-[550px] bg-cyan-600/10 rounded-full blur-[150px]"/><div className="absolute -bottom-40 -right-40 w-[550px] h-[550px] bg-emerald-600/10 rounded-full blur-[160px]"/><div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/[.04] rounded-full blur-[180px]"/><div className="absolute inset-0 opacity-[.035]" style={{backgroundImage:"radial-gradient(circle,#fff 1px,transparent 1px)",backgroundSize:"24px 24px"}}/></div>
+
+<header className="relative z-30 h-[76px] border-b border-slate-800/70 bg-[#060a12]/70 backdrop-blur-xl"><div className="max-w-7xl mx-auto h-full px-5 sm:px-8 flex items-center justify-between"><div className="flex items-center gap-3"><Logo size={40}/><div className="flex flex-col"><span className="text-lg sm:text-xl font-black tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent">FitStreak <span className="text-emerald-400">AI</span></span><span className="text-[9px] text-slate-500 font-mono tracking-[.18em] uppercase">Adaptive Coach</span></div></div><a href="/" className="group flex items-center gap-2 text-xs sm:text-sm text-slate-400 hover:text-cyan-400 transition-colors"><span className="transition-transform group-hover:-translate-x-1">←</span>Back to website</a></div></header>
+
+<main className="relative z-10 min-h-[calc(100vh-76px)] flex items-center"><div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 py-10 lg:py-16"><div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+
+<section className="hidden lg:block relative"><div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-slate-950/70 border border-emerald-500/20 text-[10px] font-mono tracking-widest text-emerald-400 mb-7"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping"/><span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"/></span>AI SYSTEMS ONLINE</div><h1 className="text-4xl xl:text-5xl font-black tracking-tight leading-[1.08] max-w-xl">Your Fitness.<br/><span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">Intelligence.</span><br/><span className="text-white">Evolved.</span></h1><p className="mt-6 text-slate-400 text-base leading-relaxed max-w-lg">Sign in to continue your adaptive training journey. Your AI coach is ready to analyze, guide and optimize every rep.</p><AITrainingCore/></section>
+
+<section className="w-full max-w-md mx-auto lg:ml-auto"><div className="relative rounded-3xl bg-slate-950/80 border border-slate-700/70 backdrop-blur-2xl shadow-2xl shadow-black/40 p-6 sm:p-8"><HUDCorners/><div className="absolute top-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"/><div className="mb-8"><div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-400/20 flex items-center justify-center mb-6"><Logo size={30}/></div><p className="text-[10px] font-mono tracking-[.2em] uppercase text-cyan-400 mb-2">Secure Access</p><h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">Welcome back.</h2><p className="mt-3 text-sm text-slate-400 leading-relaxed">Sign in to access your personalized AI training environment.</p></div>
+
+<form onSubmit={handleSubmit} className="space-y-5">
+<div><label htmlFor="email" className="block text-[10px] font-mono tracking-widest uppercase text-slate-400 mb-2">Email Address</label><div className="relative"><div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required autoComplete="email" className="w-full h-14 rounded-2xl bg-slate-900/70 border border-slate-700 pl-12 pr-4 text-sm text-white placeholder:text-slate-600 outline-none transition-all duration-300 focus:border-cyan-400/70 focus:ring-2 focus:ring-cyan-400/10 hover:border-slate-600"/></div></div>
+
+<div><div className="flex items-center justify-between mb-2"><label htmlFor="password" className="text-[10px] font-mono tracking-widest uppercase text-slate-400">Password</label><button type="button" className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors">Forgot password?</button></div><div className="relative"><div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><input id="password" name="password" type={showPassword?"text":"password"} value={formData.password} onChange={handleChange} placeholder="Enter your password" required autoComplete="current-password" className="w-full h-14 rounded-2xl bg-slate-900/70 border border-slate-700 pl-12 pr-12 text-sm text-white placeholder:text-slate-600 outline-none transition-all duration-300 focus:border-cyan-400/70 focus:ring-2 focus:ring-cyan-400/10 hover:border-slate-600"/><button type="button" onClick={()=>setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-cyan-400 transition-colors" aria-label={showPassword?"Hide password":"Show password"}>{showPassword?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c5 0 9 7 9 7a17 17 0 0 1-3.2 3.8"/><path d="M6.5 6.5C4.1 8.1 3 12 3 12s4 7 9 7c1.2 0 2.3-.3 3.3-.7"/></svg>:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z"/><circle cx="12" cy="12" r="2.5"/></svg>}</button></div></div>
+
+<label className="flex items-center gap-3 cursor-pointer select-none"><input type="checkbox" className="w-4 h-4 rounded border-slate-700 bg-slate-900 accent-cyan-400"/><span className="text-xs text-slate-500">Keep me signed in</span></label>
+
+<button type="submit" disabled={loading} className="relative group w-full h-14 rounded-2xl overflow-hidden font-bold text-sm text-slate-950 shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/25 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 hover:scale-[1.01] active:scale-[.98]"><span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400"/><span className="absolute inset-y-0 -left-[100%] w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:left-[150%] transition-all duration-700"/><span className="relative flex items-center justify-center gap-3">{loading?<><span className="w-4 h-4 border-2 border-slate-900/30 border-t-slate-950 rounded-full animate-spin"/>Authenticating...</>:<>Enter FitStreak<span className="text-lg">→</span></>}</span></button>
+</form>
+
+<div className="flex items-center gap-4 my-7"><div className="h-px flex-1 bg-slate-800"/><span className="text-[9px] font-mono tracking-widest text-slate-600">OR</span><div className="h-px flex-1 bg-slate-800"/></div>
+<p className="text-center text-sm text-slate-500">Don't have an account? <a href="/register" className="text-cyan-400 font-semibold hover:text-emerald-400 transition-colors">Create one</a></p>
+<div className="mt-7 pt-5 border-t border-slate-800/80 flex items-center justify-center gap-2"><span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50 animate-ping"/><span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"/></span><span className="text-[9px] font-mono tracking-widest text-slate-500 uppercase">Secure AI Environment</span></div>
+</div></section>
+
+</div></div></main>
+
+<div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-20 hidden sm:flex items-center gap-4 px-4 py-2 rounded-full bg-slate-950/80 border border-slate-800 backdrop-blur-xl text-[8px] font-mono tracking-widest text-slate-600"><span>FITSTREAK OS</span><span className="text-slate-800">/</span><span className="text-cyan-500/70">AI ENGINE READY</span><span className="text-slate-800">/</span><span>ENCRYPTED SESSION</span></div>
+</div>
+);
+};
+
+export default Login;
