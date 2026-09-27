@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FEATURES = [
   {
@@ -869,23 +870,25 @@ export default function FitStreakAI() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span>NEXT-GEN COMPUTER VISION v2.4</span>
+              <span>REAL-TIME AI FITNESS • COMPUTER VISION</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
               Transform Fitness
               <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">
-                With Real-Time AI
+                With Adaptive AI
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
-              Experience the future of personal training. Computer vision tracks your pose, detects repetitions, corrects form live, and automatically adapts your workouts.
+              Real-time computer vision analyzes your exercise form, tracks performance, and adapts your next workout to your progress.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/25 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
+              <button onClick={() => {
+                window.location.href = "/login";
+              }}className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/25 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
                 <span>Get Started Now</span>
                 <span className="text-xl">→</span>
               </button>
@@ -897,18 +900,18 @@ export default function FitStreakAI() {
 
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80">
               <div>
-                <p className="text-2xl font-black text-white font-mono">99.4%</p>
-                <p className="text-xs text-slate-400">Pose Accuracy</p>
+                <p className="text-2xl font-black text-white font-mono">ADAPTIVE</p>
+                <p className="text-xs text-slate-400">Workout Plans</p>
               </div>
 
               <div>
-                <p className="text-2xl font-black text-emerald-400 font-mono">33+</p>
-                <p className="text-xs text-slate-400">Joint Points</p>
+                <p className="text-2xl font-black text-emerald-400 font-mono">REAL-TIME</p>
+                <p className="text-xs text-slate-400">Pose Analysis</p>
               </div>
 
               <div>
-                <p className="text-2xl font-black text-cyan-400 font-mono">100k+</p>
-                <p className="text-xs text-slate-400">Active Workouts</p>
+                <p className="text-2xl font-black text-cyan-400 font-mono">AI-BASED</p>
+                <p className="text-xs text-slate-400">Form Feedback</p>
               </div>
             </div>
           </div>
